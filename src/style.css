@@ -1,3 +1,51 @@
+@keyframes swapCards {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(-5deg) translateY(-20px);
+  }
+  75% {
+    transform: scale(1.1) rotate(5deg) translateY(-20px);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* 왼쪽 카드와 오른쪽 카드에 다른 애니메이션 적용 */
+.card-item.swapping-left {
+  animation: swapLeft 0.5s ease;
+}
+
+.card-item.swapping-right {
+  animation: swapRight 0.5s ease;
+}
+
+@keyframes swapLeft {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-20px) rotate(-10deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes swapRight {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(20px) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
 .card-container {
   display: flex;
   gap: 20px;
@@ -7,13 +55,18 @@
 .card-item {
   width: 100px;
   height: 150px;
-  background: white;
+  background: #16222a;
   border: 2px solid #333;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
-  transition: transform 0.5s;
+  transition: all 0.3s ease;
+  cursor: pointer;
   order: 0;
+}
+
+.card-item.swapping {
+  animation: swapCards 0.5s ease;
 }
